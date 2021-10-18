@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html --open"
+    "start": "parcel src/index.html --open"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,9 @@
     "sass": "^1.43.2"
   },
   "dependencies": {
+    "Utils": "^1.0.39",
     "components": "^0.1.0",
+    "dayjs": "^1.10.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   }
