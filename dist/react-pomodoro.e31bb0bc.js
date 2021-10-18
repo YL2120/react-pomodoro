@@ -29566,17 +29566,153 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"components/Chrono.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Chrono = function Chrono() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "col-8"
+  }, /*#__PURE__*/_react.default.createElement("h1", {
+    className: "chrono-display text-success text-center"
+  }, "19:59"));
+};
+
+var _default = Chrono;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/Plus_Minus.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var Plus_Minus = function Plus_Minus() {
+  return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center  w-25 mb-1"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-plus"
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center w-25 mb-1"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-minus"
+  })));
+};
+
+var _default = Plus_Minus;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/Play.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Play = function Play() {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-play text-outline-success"
+  }));
+};
+
+var _default = Play;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/Reset.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Reset = function Reset() {
+  return /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2"
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-retweet"
+  }));
+};
+
+var _default = Reset;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _Chrono = _interopRequireDefault(require("./components/Chrono"));
+
+var _Plus_Minus = _interopRequireDefault(require("./components/Plus_Minus"));
+
+var _Play = _interopRequireDefault(require("./components/Play"));
+
+var _Reset = _interopRequireDefault(require("./components/Reset"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "App"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "container centered w-50"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "row"
+  }, /*#__PURE__*/_react.default.createElement(_Chrono.default, null), /*#__PURE__*/_react.default.createElement("div", {
+    className: "col-4 d-flex flex-column"
+  }, /*#__PURE__*/_react.default.createElement(_Plus_Minus.default, null), /*#__PURE__*/_react.default.createElement(_Play.default, null), /*#__PURE__*/_react.default.createElement(_Reset.default, null))))));
+};
+
+var _default = App;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","./components/Chrono":"components/Chrono.js","./components/Plus_Minus":"components/Plus_Minus.js","./components/Play":"components/Play.js","./components/Reset":"components/Reset.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
+var _App = _interopRequireDefault(require("./App"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom.default.render( /*#__PURE__*/_react.default.createElement("h1", null, "Hello world!"), document.getElementById("root"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+_reactDom.default.render( /*#__PURE__*/_react.default.createElement(_App.default, null), document.getElementById("root"));
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./App":"App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -29604,7 +29740,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65331" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55490" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
