@@ -29580,58 +29580,12 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var Chrono = function Chrono(_ref) {
-  var MinSecs = _ref.MinSecs;
-  var _MinSecs$minutes = MinSecs.minutes,
-      minutes = _MinSecs$minutes === void 0 ? 0 : _MinSecs$minutes,
-      _MinSecs$seconds = MinSecs.seconds,
-      seconds = _MinSecs$seconds === void 0 ? 60 : _MinSecs$seconds;
-
-  var _useState = (0, _react.useState)([minutes, seconds]),
-      _useState2 = _slicedToArray(_useState, 2),
-      _useState2$ = _slicedToArray(_useState2[0], 2),
-      mins = _useState2$[0],
-      secs = _useState2$[1],
-      setTime = _useState2[1];
-
-  var tick = function tick() {
-    if (mins === 0 && secs === 0) reset();else if (secs === 0) {
-      setTime([mins - 1, 59]);
-    } else {
-      setTime([mins, secs - 1]);
-    }
-  };
-
-  var reset = function reset() {
-    return setTime([parseInt(minutes), parseInt(seconds)]);
-  }; // reset whenever the timer arrives at 0
-
-
-  (0, _react.useEffect)(function () {
-    var timerId = setInterval(function () {
-      return tick();
-    }, 1000);
-    return function () {
-      return clearInterval(timerId);
-    };
-  });
+var Chrono = function Chrono(props) {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "col-8"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "chrono-display text-success text-center"
-  }, "".concat(mins.toString().padStart(2, '0'), ":").concat(secs.toString().padStart(2, '0'))));
+  }, props.Minutes, ":", props.Seconds < 10 ? "0".concat(props.Seconds) : props.Seconds, " "));
 };
 
 var _default = Chrono;
@@ -29650,10 +29604,36 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 var Plus_Minus = function Plus_Minus() {
+  var _useState = (0, _react.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      minutes = _useState2[0],
+      setMinutes = _useState2[1];
+
+  function AddMinutes() {
+    setMinutes(minutes + 1);
+  }
+
   return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center  w-25 mb-1"
+    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center  w-25 mb-1",
+    onClick: function onClick() {
+      return setTime(function (minutes) {
+        return minutes + 1;
+      });
+    }
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-plus"
   })), /*#__PURE__*/_react.default.createElement("button", {
@@ -29674,14 +29654,42 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
-var Play = function Play() {
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+var Play = function Play(props) {
+  function HandleCheck() {
+    if (props.Check === false) props.Setcheck(true);else props.Setcheck(false);
+  }
+
+  if (props.Check === true) {
+    (0, _react.useEffect)(function () {
+      setTimeout(function () {
+        if (props.Seconds > 0) {
+          props.Setseconds(props.Seconds - 1);
+        } else if (props.Seconds === 0) {
+          if (props.Minutes === 0) {
+            // clearInterval(myInterval)
+            props.Setminutes(0);
+            props.Setseconds(0);
+          } else {
+            props.Setminutes(props.Minutes - 1);
+            props.Setseconds(59);
+          }
+        }
+      }, 1000); // return ()=> {
+      //     clearInterval(myInterval);
+      //   };
+    });
+  }
+
   return /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center"
+    className: "btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center",
+    onClick: HandleCheck
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-play text-outline-success"
   }));
@@ -29720,7 +29728,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _Chrono = _interopRequireDefault(require("./components/Chrono"));
 
@@ -29732,12 +29740,42 @@ var _Reset = _interopRequireDefault(require("./components/Reset"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var MinSecs = {
-  minutes: 1,
-  seconds: 0
-};
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
+  var _useState = (0, _react.useState)(0),
+      _useState2 = _slicedToArray(_useState, 2),
+      minutes = _useState2[0],
+      setMinutes = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(2),
+      _useState4 = _slicedToArray(_useState3, 2),
+      seconds = _useState4[0],
+      setSeconds = _useState4[1];
+
+  var _useState5 = (0, _react.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      check = _useState6[0],
+      setCheck = _useState6[1]; // function addMins(times) {  //add new todo to our array
+  //   setTime([times, ...time])//"...todos" old todo array list
+  //   //1st param : new array 2nd param : old todo array spreads over it
+  // }
+
+
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "App"
   }, /*#__PURE__*/_react.default.createElement("div", {
@@ -29747,10 +29785,23 @@ var App = function App() {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "row"
   }, /*#__PURE__*/_react.default.createElement(_Chrono.default, {
-    MinSecs: MinSecs
+    Minutes: minutes,
+    Seconds: seconds
   }), /*#__PURE__*/_react.default.createElement("div", {
     className: "col-4 d-flex flex-column"
-  }, /*#__PURE__*/_react.default.createElement(_Plus_Minus.default, null), /*#__PURE__*/_react.default.createElement(_Play.default, null), /*#__PURE__*/_react.default.createElement(_Reset.default, null))))));
+  }, /*#__PURE__*/_react.default.createElement(_Plus_Minus.default, {
+    Minutes: minutes,
+    Setminutes: setMinutes,
+    Setseconds: setSeconds,
+    Seconds: seconds
+  }), /*#__PURE__*/_react.default.createElement(_Play.default, {
+    Minutes: minutes,
+    Setminutes: setMinutes,
+    Setseconds: setSeconds,
+    Seconds: seconds,
+    Check: check,
+    Setcheck: setCheck
+  }), /*#__PURE__*/_react.default.createElement(_Reset.default, null))))));
 };
 
 var _default = App;
@@ -29795,7 +29846,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54779" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60900" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
