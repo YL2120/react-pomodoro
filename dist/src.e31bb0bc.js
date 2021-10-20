@@ -29585,7 +29585,7 @@ var Chrono = function Chrono(props) {
     className: "col-8"
   }, /*#__PURE__*/_react.default.createElement("h1", {
     className: "chrono-display text-success text-center"
-  }, props.Minutes, ":", props.Seconds < 10 ? "0".concat(props.Seconds) : props.Seconds, " "));
+  }, props.Minutes < 10 ? "0".concat(props.Minutes) : props.Minutes, ":", props.Seconds < 10 ? "0".concat(props.Seconds) : props.Seconds, " "));
 };
 
 var _default = Chrono;
@@ -29604,41 +29604,21 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var Plus_Minus = function Plus_Minus() {
-  var _useState = (0, _react.useState)(),
-      _useState2 = _slicedToArray(_useState, 2),
-      minutes = _useState2[0],
-      setMinutes = _useState2[1];
-
-  function AddMinutes() {
-    setMinutes(minutes + 1);
-  }
-
+var Plus_Minus = function Plus_Minus(props) {
   return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center  w-25 mb-1",
     onClick: function onClick() {
-      return setTime(function (minutes) {
-        return minutes + 1;
-      });
+      return props.Minutes < 59 ? props.Setminutes(props.Minutes + 1) : props.Setminutes(0);
     }
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-plus"
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center w-25 mb-1"
+    className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center w-25 mb-1",
+    onClick: function onClick() {
+      return props.Minutes > 0 ? props.Setminutes(props.Minutes - 1) : props.Setminutes(59);
+    }
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-minus"
   })));
@@ -29646,7 +29626,7 @@ var Plus_Minus = function Plus_Minus() {
 
 var _default = Plus_Minus;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/Play.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js"}],"components/PlayReset.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29661,64 +29641,64 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var Play = function Play(props) {
-  function HandleCheck() {
-    if (props.Check === false) props.Setcheck(true);else props.Setcheck(false);
+  function HandlePlay() {
+    if (props.Play === false) {
+      props.Setplay(true);
+      var mins = props.Minutes.toString();
+      var secs = props.Seconds.toString();
+      localStorage.setItem("minu", mins);
+      localStorage.setItem("secu", secs);
+    } else props.Setplay(false);
   }
 
-  if (props.Check === true) {
+  function HandleReset() {
+    props.Setplay(false);
+    setTimeout(function () {
+      var intmins = localStorage.getItem("minu");
+      console.log(intmins);
+      var intsecu = localStorage.getItem("secu");
+      props.Setminutes(parseInt(intmins));
+      props.Setseconds(parseInt(intsecu));
+    }, 1000);
+  }
+
+  if (props.Play === true) {
     (0, _react.useEffect)(function () {
-      setTimeout(function () {
+      var myInterval = setTimeout(function () {
         if (props.Seconds > 0) {
           props.Setseconds(props.Seconds - 1);
         } else if (props.Seconds === 0) {
           if (props.Minutes === 0) {
-            // clearInterval(myInterval)
-            props.Setminutes(0);
-            props.Setseconds(0);
+            clearTimeout(myInterval);
+            props.Setplay(false);
           } else {
             props.Setminutes(props.Minutes - 1);
             props.Setseconds(59);
           }
         }
-      }, 1000); // return ()=> {
-      //     clearInterval(myInterval);
-      //   };
+      }, 1000);
+      return function () {
+        clearTimeout(myInterval);
+      };
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center",
-    onClick: HandleCheck
+    onClick: HandlePlay
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-play text-outline-success"
-  }));
+  })), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2",
+    onClick: HandleReset
+  }, /*#__PURE__*/_react.default.createElement("i", {
+    class: "fas fa-retweet"
+  })));
 };
 
 var _default = Play;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js"}],"components/Reset.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Reset = function Reset() {
-  return /*#__PURE__*/_react.default.createElement("button", {
-    type: "button",
-    className: "btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2"
-  }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-retweet"
-  }));
-};
-
-var _default = Reset;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
@@ -29734,9 +29714,7 @@ var _Chrono = _interopRequireDefault(require("./components/Chrono"));
 
 var _Plus_Minus = _interopRequireDefault(require("./components/Plus_Minus"));
 
-var _Play = _interopRequireDefault(require("./components/Play"));
-
-var _Reset = _interopRequireDefault(require("./components/Reset"));
+var _PlayReset = _interopRequireDefault(require("./components/PlayReset"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29757,20 +29735,21 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _react.useState)(2),
       _useState2 = _slicedToArray(_useState, 2),
       minutes = _useState2[0],
       setMinutes = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(2),
+  var _useState3 = (0, _react.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
       seconds = _useState4[0],
       setSeconds = _useState4[1];
 
   var _useState5 = (0, _react.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      check = _useState6[0],
-      setCheck = _useState6[1]; // function addMins(times) {  //add new todo to our array
+      play = _useState6[0],
+      setPlay = _useState6[1]; // const [plusminus, setPlus] = useState(false);
+  // function addMins(times) {  //add new todo to our array
   //   setTime([times, ...time])//"...todos" old todo array list
   //   //1st param : new array 2nd param : old todo array spreads over it
   // }
@@ -29794,19 +29773,19 @@ var App = function App() {
     Setminutes: setMinutes,
     Setseconds: setSeconds,
     Seconds: seconds
-  }), /*#__PURE__*/_react.default.createElement(_Play.default, {
+  }), /*#__PURE__*/_react.default.createElement(_PlayReset.default, {
     Minutes: minutes,
     Setminutes: setMinutes,
     Setseconds: setSeconds,
     Seconds: seconds,
-    Check: check,
-    Setcheck: setCheck
-  }), /*#__PURE__*/_react.default.createElement(_Reset.default, null))))));
+    Play: play,
+    Setplay: setPlay
+  }))))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/Chrono":"components/Chrono.js","./components/Plus_Minus":"components/Plus_Minus.js","./components/Play":"components/Play.js","./components/Reset":"components/Reset.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/Chrono":"components/Chrono.js","./components/Plus_Minus":"components/Plus_Minus.js","./components/PlayReset":"components/PlayReset.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29846,7 +29825,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60900" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65463" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

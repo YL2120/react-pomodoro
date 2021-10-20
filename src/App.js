@@ -1,8 +1,8 @@
 import React from "react";
 import Chrono from "./components/Chrono";
 import Plus_Minus from "./components/Plus_Minus";
-import Play from "./components/Play";
-import Reset from "./components/Reset";
+import Play from "./components/PlayReset";
+
 import { useEffect, useState } from 'react';
 
 
@@ -11,9 +11,10 @@ import { useEffect, useState } from 'react';
 
 const App  = () => {
  
-  const [minutes, setMinutes ] = useState(0);
-  const [seconds, setSeconds ] =  useState(2);
-  const [check, setCheck] = useState(false);
+  const [minutes, setMinutes ] = useState(2);
+  const [seconds, setSeconds ] =  useState(0);
+  const [play, setPlay] = useState(false);
+  // const [plusminus, setPlus] = useState(false);
 
 
   // function addMins(times) {  //add new todo to our array
@@ -30,8 +31,7 @@ const App  = () => {
          <Chrono  Minutes={minutes} Seconds={seconds} />
          <div className="col-4 d-flex flex-column">
           <Plus_Minus  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} />
-          <Play Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds}  Check={check} Setcheck={setCheck} />
-          <Reset />
+          <Play Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds}  Play={play} Setplay={setPlay} />
           </div>
          </div>
          </div>
