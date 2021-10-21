@@ -29605,20 +29605,28 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 var Plus_Minus = function Plus_Minus(props) {
+  function AddMinutes() {
+    if (props.Play === false) {
+      if (props.Minutes < 59) props.Setminutes(props.Minutes + 1);else props.Setminutes(0);
+    }
+  }
+
+  function SubMinutes() {
+    if (props.Play === false) {
+      if (props.Minutes > 0) props.Setminutes(props.Minutes - 1);else props.Setminutes(59);
+    }
+  }
+
   return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center  w-25 mb-1",
-    onClick: function onClick() {
-      return props.Minutes < 59 ? props.Setminutes(props.Minutes + 1) : props.Setminutes(0);
-    }
+    onClick: AddMinutes
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-plus"
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-outline-success btn-sm p-2 d-flex justify-content-center align-items-center w-25 mb-1",
-    onClick: function onClick() {
-      return props.Minutes > 0 ? props.Setminutes(props.Minutes - 1) : props.Setminutes(59);
-    }
+    onClick: SubMinutes
   }, /*#__PURE__*/_react.default.createElement("i", {
     class: "fas fa-minus"
   })));
@@ -29700,6 +29708,75 @@ var Play = function Play(props) {
 
 var _default = Play;
 exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/Modal.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var Modal = function Modal(props) {
+  var _React$createElement;
+
+  var element = (0, _react.useRef)();
+  var close = (0, _react.useRef)();
+
+  if (props.Seconds == 0 && props.Minutes == 0) {
+    var inputE1 = element.current;
+    inputE1.style.display = "flex";
+  }
+
+  function closeModal() {
+    var inputE1 = close.current;
+    inputE1.style.display = "none";
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", (_React$createElement = {
+    className: "modal d-flex justify-content-center align-items-center",
+    ref: close
+  }, _defineProperty(_React$createElement, "ref", element), _defineProperty(_React$createElement, "tabindex", "-1"), _defineProperty(_React$createElement, "role", "dialog"), _React$createElement), /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-dialog",
+    role: "document"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-content"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-header"
+  }, /*#__PURE__*/_react.default.createElement("h5", {
+    className: "modal-title"
+  }, "Modal title"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "close",
+    "data-dismiss": "modal",
+    "aria-label": "Close"
+  }, /*#__PURE__*/_react.default.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"))), /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-body"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Modal body text goes here.")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-footer"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-secondary",
+    onClick: function onClick() {
+      return closeModal();
+    }
+  }, "Close"), /*#__PURE__*/_react.default.createElement("button", {
+    type: "button",
+    className: "btn btn-primary"
+  }, "Save changes")))));
+};
+
+var _default = Modal;
+exports.default = _default;
 },{"react":"../node_modules/react/index.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
@@ -29715,6 +29792,8 @@ var _Chrono = _interopRequireDefault(require("./components/Chrono"));
 var _Plus_Minus = _interopRequireDefault(require("./components/Plus_Minus"));
 
 var _PlayReset = _interopRequireDefault(require("./components/PlayReset"));
+
+var _Modal = _interopRequireDefault(require("./components/Modal"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29740,7 +29819,7 @@ var App = function App() {
       minutes = _useState2[0],
       setMinutes = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(0),
+  var _useState3 = (0, _react.useState)(2),
       _useState4 = _slicedToArray(_useState3, 2),
       seconds = _useState4[0],
       setSeconds = _useState4[1];
@@ -29772,7 +29851,9 @@ var App = function App() {
     Minutes: minutes,
     Setminutes: setMinutes,
     Setseconds: setSeconds,
-    Seconds: seconds
+    Seconds: seconds,
+    Play: play,
+    Setplay: setPlay
   }), /*#__PURE__*/_react.default.createElement(_PlayReset.default, {
     Minutes: minutes,
     Setminutes: setMinutes,
@@ -29780,12 +29861,19 @@ var App = function App() {
     Seconds: seconds,
     Play: play,
     Setplay: setPlay
-  }))))));
+  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Modal.default, {
+    Minutes: minutes,
+    Setminutes: setMinutes,
+    Setseconds: setSeconds,
+    Seconds: seconds,
+    Play: play,
+    Setplay: setPlay
+  })))));
 };
 
 var _default = App;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","./components/Chrono":"components/Chrono.js","./components/Plus_Minus":"components/Plus_Minus.js","./components/PlayReset":"components/PlayReset.js"}],"index.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","./components/Chrono":"components/Chrono.js","./components/Plus_Minus":"components/Plus_Minus.js","./components/PlayReset":"components/PlayReset.js","./components/Modal":"components/Modal.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -29825,7 +29913,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65463" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58930" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

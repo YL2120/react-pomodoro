@@ -2,6 +2,7 @@ import React from "react";
 import Chrono from "./components/Chrono";
 import Plus_Minus from "./components/Plus_Minus";
 import Play from "./components/PlayReset";
+import Modal from "./components/Modal";
 
 import { useEffect, useState } from 'react';
 
@@ -12,7 +13,7 @@ import { useEffect, useState } from 'react';
 const App  = () => {
  
   const [minutes, setMinutes ] = useState(2);
-  const [seconds, setSeconds ] =  useState(0);
+  const [seconds, setSeconds ] =  useState(2);
   const [play, setPlay] = useState(false);
   // const [plusminus, setPlus] = useState(false);
 
@@ -30,11 +31,15 @@ const App  = () => {
             <div className="row">
          <Chrono  Minutes={minutes} Seconds={seconds} />
          <div className="col-4 d-flex flex-column">
-          <Plus_Minus  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} />
+          <Plus_Minus  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} Play={play} Setplay={setPlay} />
           <Play Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds}  Play={play} Setplay={setPlay} />
+          
           </div>
          </div>
+         <div>
+           <Modal  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} Play={play} Setplay={setPlay} />
          </div>
+      </div>
       </div>
     </div>
     );
