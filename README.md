@@ -20,5 +20,6 @@ You can check the pomodoro [here](https://clever-hermann-18a3a6.netlify.app/)
 - [Parcel](https://parceljs.org/)
 - HTML 
 - CSS
+- [SASS](https://sass-lang.com/)
 - [Bootstrap](https://getbootstrap.com/)
 - [React](https://fr.reactjs.org/)
