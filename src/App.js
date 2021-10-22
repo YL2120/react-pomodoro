@@ -12,8 +12,8 @@ import { useEffect, useState } from 'react';
 
 const App  = () => {
  
-  const [minutes, setMinutes ] = useState(0);
-  const [seconds, setSeconds ] =  useState(2);
+  const [minutes, setMinutes ] = useState(1);
+  const [seconds, setSeconds ] =  useState(0);
   const [start,setStart] = useState("fas fa-play text-outline-success");
   const [play, setPlay] = useState(false);
   // const [plusminus, setPlus] = useState(false);

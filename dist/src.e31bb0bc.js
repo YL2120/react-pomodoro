@@ -29821,12 +29821,12 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
-  var _useState = (0, _react.useState)(0),
+  var _useState = (0, _react.useState)(1),
       _useState2 = _slicedToArray(_useState, 2),
       minutes = _useState2[0],
       setMinutes = _useState2[1];
 
-  var _useState3 = (0, _react.useState)(2),
+  var _useState3 = (0, _react.useState)(0),
       _useState4 = _slicedToArray(_useState3, 2),
       seconds = _useState4[0],
       setSeconds = _useState4[1];
