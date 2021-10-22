@@ -1,6 +1,6 @@
 # Pomodoro
 A simple, static, pomodoro timer with React made during the Becode bootcamp.
-You can check the pomodro [here](https://clever-hermann-18a3a6.netlify.app/)
+You can check the pomodoro [here](https://clever-hermann-18a3a6.netlify.app/)
 
 ## Requirements
 
