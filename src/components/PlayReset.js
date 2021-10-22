@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 const Play = (props ) => {
     
@@ -7,16 +7,20 @@ const Play = (props ) => {
 
     function HandlePlay () {
         if(props.Play === false){
-            props.Setplay(true);
+            props.Setplay(true); 
+            props.Setstart("fas fa-pause text-outline-success") ;
             const mins = (props.Minutes).toString();
             const secs = (props.Seconds).toString();
             localStorage.setItem("minu",mins);
             localStorage.setItem("secu",secs);
             
-            
         }
         else
-         props.Setplay(false);
+        {
+            props.Setplay(false);
+            props.Setstart("fas fa-play text-outline-success");
+        }
+        
     }
 
     function HandleReset (){
@@ -66,8 +70,8 @@ const Play = (props ) => {
     
     return ( 
         <Fragment>
-        <button type="button" className="btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center" onClick = { HandlePlay } ><i class="fas fa-play text-outline-success"></i></button>
-        <button type="button" className="btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2" onClick = { HandleReset } ><i class="fas fa-retweet"></i></button>
+        <button type="button" className="btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center" onClick = { HandlePlay } ><i  className={props.Start}></i></button>
+        <button type="button" className="btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2" onClick = { HandleReset } ><i className="fas fa-retweet"></i></button>
         </Fragment>
     );
 }

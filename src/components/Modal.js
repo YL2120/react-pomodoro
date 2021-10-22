@@ -26,12 +26,12 @@ const Modal = (props) => {
 <div className="modal mt-5" ref={element} tabindex="-1">
   <div className="modal-dialog">
     <div className="modal-content">
-      <div className="modal-header border border-left">
-        <h5 className="modal-title text-white text-center">Pomodoro is over !</h5>
+      <div className="modal-header  border border-left">
+        <h5 className="modal-title text-white text-center p-0">Pomodoro is over !</h5>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body border border-left text-white p-1 h-25">
-        <p className="p-1">Do you want to close this window or restart ?</p>
+      <div className="modal-body border border-left text-white h-25">
+        <p className="">Do you want to close this box or restart the pomodoro ?</p>
       </div>
       <div className="modal-footer border border-white d-flex justify-content-center align-items-center">
         <button type="button" className="btn btn-secondary" onClick={closeModal} data-bs-dismiss="modal">Close</button>

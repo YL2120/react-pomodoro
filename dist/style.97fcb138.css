@@ -7,6 +7,15 @@
   font-family: "Bebas Neue", cursive;
 }
 
+.modal-title {
+  height: 1.5rem;
+}
+
+.modal-body p {
+  font-size: 1rem;
+  height: 0.1rem;
+}
+
 * {
   background-color: black;
   margin: 0;

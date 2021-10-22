@@ -29654,11 +29654,15 @@ var Play = function Play(props) {
   function HandlePlay() {
     if (props.Play === false) {
       props.Setplay(true);
+      props.Setstart("fas fa-pause text-outline-success");
       var mins = props.Minutes.toString();
       var secs = props.Seconds.toString();
       localStorage.setItem("minu", mins);
       localStorage.setItem("secu", secs);
-    } else props.Setplay(false);
+    } else {
+      props.Setplay(false);
+      props.Setstart("fas fa-play text-outline-success");
+    }
   }
 
   function HandleReset() {
@@ -29698,13 +29702,13 @@ var Play = function Play(props) {
     className: "btn btn-outline-success btn-sm  w-25 p-2 mb-1 d-flex justify-content-center align-items-center",
     onClick: HandlePlay
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-play text-outline-success"
+    className: props.Start
   })), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-outline-success btn-sm  w-25 mb-1 d-flex justify-content-center align-items-center p-2",
     onClick: HandleReset
   }, /*#__PURE__*/_react.default.createElement("i", {
-    class: "fas fa-retweet"
+    className: "fas fa-retweet"
   })));
 };
 
@@ -29752,19 +29756,19 @@ var Modal = function Modal(props) {
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-content"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-header border border-left"
+    className: "modal-header  border border-left"
   }, /*#__PURE__*/_react.default.createElement("h5", {
-    className: "modal-title text-white text-center"
+    className: "modal-title text-white text-center p-0"
   }, "Pomodoro is over !"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn-close",
     "data-bs-dismiss": "modal",
     "aria-label": "Close"
   })), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-body border border-left text-white p-1 h-25"
+    className: "modal-body border border-left text-white h-25"
   }, /*#__PURE__*/_react.default.createElement("p", {
-    className: "p-1"
-  }, "Do you want to close this window or restart ?")), /*#__PURE__*/_react.default.createElement("div", {
+    className: ""
+  }, "Do you want to close this box or restart the pomodoro ?")), /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-footer border border-white d-flex justify-content-center align-items-center"
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
@@ -29827,10 +29831,15 @@ var App = function App() {
       seconds = _useState4[0],
       setSeconds = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(false),
+  var _useState5 = (0, _react.useState)("fas fa-play text-outline-success"),
       _useState6 = _slicedToArray(_useState5, 2),
-      play = _useState6[0],
-      setPlay = _useState6[1]; // const [plusminus, setPlus] = useState(false);
+      start = _useState6[0],
+      setStart = _useState6[1];
+
+  var _useState7 = (0, _react.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      play = _useState8[0],
+      setPlay = _useState8[1]; // const [plusminus, setPlus] = useState(false);
   // function addMins(times) {  //add new todo to our array
   //   setTime([times, ...time])//"...todos" old todo array list
   //   //1st param : new array 2nd param : old todo array spreads over it
@@ -29858,6 +29867,8 @@ var App = function App() {
     Play: play,
     Setplay: setPlay
   }), /*#__PURE__*/_react.default.createElement(_PlayReset.default, {
+    Start: start,
+    Setstart: setStart,
     Minutes: minutes,
     Setminutes: setMinutes,
     Setseconds: setSeconds,
@@ -29916,7 +29927,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49497" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50655" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

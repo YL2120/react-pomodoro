@@ -14,6 +14,7 @@ const App  = () => {
  
   const [minutes, setMinutes ] = useState(0);
   const [seconds, setSeconds ] =  useState(2);
+  const [start,setStart] = useState("fas fa-play text-outline-success");
   const [play, setPlay] = useState(false);
   // const [plusminus, setPlus] = useState(false);
 
@@ -32,7 +33,7 @@ const App  = () => {
          <Chrono  Minutes={minutes} Seconds={seconds} />
          <div className="col-4 d-flex flex-column">
           <Plus_Minus  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} Play={play} Setplay={setPlay} />
-          <Play Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds}  Play={play} Setplay={setPlay} />
+          <Play Start={start} Setstart={setStart} Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds}  Play={play} Setplay={setPlay} />
           
           </div>
          </div>
