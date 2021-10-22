@@ -1,5 +1,6 @@
 @import "./style/chronos";
-
+@import "./style/modal";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 *{
     background-color: black;
@@ -16,7 +17,5 @@
   margin-left: -100px;
 }
 
-.modal{
-  display: none;
-}
+
 

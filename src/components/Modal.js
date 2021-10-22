@@ -2,45 +2,45 @@ import React from "react";
 import { useRef } from "react";
 
 const Modal = (props) => {
+  const element = useRef(0);
 
-    const element = useRef();
-    const close = useRef();
-
-    if( props.Seconds == 0 && props.Minutes == 0)
-    {
-      const inputE1 = element.current;
-      inputE1.style.display = "flex";
-    }
-
-    function closeModal (){
-      const inputE1 = close.current;
-      inputE1.style.display = "none";
-     
+  if (props.Seconds === 0 && props.Minutes === 0 && props.Play === false)
+  {
+    element.current.style.display = "flex";
+  }
     
-    }
-        return (
-          <div className="modal d-flex justify-content-center align-items-center" ref={close} ref={element} tabindex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Modal title</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>Modal body text goes here.</p>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary"  onClick={ () => closeModal() }>Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-          );
+
+  function closeModal() {
+    element.current.style.display = "none";
+  }
+
+  function Restart(){
+    element.current.style.display = "none";
+    const intmins = localStorage.getItem("minu");
+    const intsecu = localStorage.getItem("secu");
+    props.Setminutes(parseInt(intmins));
+    props.Setseconds(parseInt(intsecu));
+  }
+  return (
     
- 
+<div className="modal mt-5" ref={element} tabindex="-1">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header border border-left">
+        <h5 className="modal-title text-white text-center">Pomodoro is over !</h5>
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body border border-left text-white p-1 h-25">
+        <p className="p-1">Do you want to close this window or restart ?</p>
+      </div>
+      <div className="modal-footer border border-white d-flex justify-content-center align-items-center">
+        <button type="button" className="btn btn-secondary" onClick={closeModal} data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-success" onClick={Restart}>Restart</button>
+      </div>
+    </div>
+  </div>
+</div>
+  );
 };
 
 export default Modal;

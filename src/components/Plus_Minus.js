@@ -11,6 +11,8 @@ const Plus_Minus = (props) => {
                 
             else
             props.Setminutes(0);
+
+            props.Setseconds(0);
         }
     }
 
@@ -22,6 +24,8 @@ const Plus_Minus = (props) => {
                 
             else
             props.Setminutes(59);
+
+            props.Setseconds(0);
         }
     }
     

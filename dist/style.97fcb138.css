@@ -1,5 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 .chrono-display {
   font-size: 6.5rem;
+}
+
+.modal {
+  font-family: "Bebas Neue", cursive;
 }
 
 * {
@@ -15,10 +20,6 @@
   left: 40%;
   margin-top: -50px;
   margin-left: -100px;
-}
-
-.modal {
-  display: none;
 }
 
 /*# sourceMappingURL=/style.97fcb138.css.map */

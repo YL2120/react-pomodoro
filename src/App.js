@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 
 const App  = () => {
  
-  const [minutes, setMinutes ] = useState(2);
+  const [minutes, setMinutes ] = useState(0);
   const [seconds, setSeconds ] =  useState(2);
   const [play, setPlay] = useState(false);
   // const [plusminus, setPlus] = useState(false);
@@ -36,10 +36,11 @@ const App  = () => {
           
           </div>
          </div>
-         <div>
+         
+      </div>
+      <div>
            <Modal  Minutes={minutes} Setminutes={setMinutes} Setseconds={setSeconds} Seconds={seconds} Play={play} Setplay={setPlay} />
          </div>
-      </div>
       </div>
     </div>
     );

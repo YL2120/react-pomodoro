@@ -29608,12 +29608,14 @@ var Plus_Minus = function Plus_Minus(props) {
   function AddMinutes() {
     if (props.Play === false) {
       if (props.Minutes < 59) props.Setminutes(props.Minutes + 1);else props.Setminutes(0);
+      props.Setseconds(0);
     }
   }
 
   function SubMinutes() {
     if (props.Play === false) {
       if (props.Minutes > 0) props.Setminutes(props.Minutes - 1);else props.Setminutes(59);
+      props.Setseconds(0);
     }
   }
 
@@ -29722,57 +29724,58 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var Modal = function Modal(props) {
-  var _React$createElement;
+  var element = (0, _react.useRef)(0);
 
-  var element = (0, _react.useRef)();
-  var close = (0, _react.useRef)();
-
-  if (props.Seconds == 0 && props.Minutes == 0) {
-    var inputE1 = element.current;
-    inputE1.style.display = "flex";
+  if (props.Seconds === 0 && props.Minutes === 0 && props.Play === false) {
+    element.current.style.display = "flex";
   }
 
   function closeModal() {
-    var inputE1 = close.current;
-    inputE1.style.display = "none";
+    element.current.style.display = "none";
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", (_React$createElement = {
-    className: "modal d-flex justify-content-center align-items-center",
-    ref: close
-  }, _defineProperty(_React$createElement, "ref", element), _defineProperty(_React$createElement, "tabindex", "-1"), _defineProperty(_React$createElement, "role", "dialog"), _React$createElement), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-dialog",
-    role: "document"
+  function Restart() {
+    element.current.style.display = "none";
+    var intmins = localStorage.getItem("minu");
+    var intsecu = localStorage.getItem("secu");
+    props.Setminutes(parseInt(intmins));
+    props.Setseconds(parseInt(intsecu));
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal mt-5",
+    ref: element,
+    tabindex: "-1"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-dialog"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "modal-content"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-header"
+    className: "modal-header border border-left"
   }, /*#__PURE__*/_react.default.createElement("h5", {
-    className: "modal-title"
-  }, "Modal title"), /*#__PURE__*/_react.default.createElement("button", {
+    className: "modal-title text-white text-center"
+  }, "Pomodoro is over !"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "close",
-    "data-dismiss": "modal",
+    className: "btn-close",
+    "data-bs-dismiss": "modal",
     "aria-label": "Close"
-  }, /*#__PURE__*/_react.default.createElement("span", {
-    "aria-hidden": "true"
-  }, "\xD7"))), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-body"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Modal body text goes here.")), /*#__PURE__*/_react.default.createElement("div", {
-    className: "modal-footer"
+  })), /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-body border border-left text-white p-1 h-25"
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "p-1"
+  }, "Do you want to close this window or restart ?")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "modal-footer border border-white d-flex justify-content-center align-items-center"
   }, /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
     className: "btn btn-secondary",
-    onClick: function onClick() {
-      return closeModal();
-    }
+    onClick: closeModal,
+    "data-bs-dismiss": "modal"
   }, "Close"), /*#__PURE__*/_react.default.createElement("button", {
     type: "button",
-    className: "btn btn-primary"
-  }, "Save changes")))));
+    className: "btn btn-success",
+    onClick: Restart
+  }, "Restart")))));
 };
 
 var _default = Modal;
@@ -29814,7 +29817,7 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var App = function App() {
-  var _useState = (0, _react.useState)(2),
+  var _useState = (0, _react.useState)(0),
       _useState2 = _slicedToArray(_useState, 2),
       minutes = _useState2[0],
       setMinutes = _useState2[1];
@@ -29861,14 +29864,14 @@ var App = function App() {
     Seconds: seconds,
     Play: play,
     Setplay: setPlay
-  }))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Modal.default, {
+  })))), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Modal.default, {
     Minutes: minutes,
     Setminutes: setMinutes,
     Setseconds: setSeconds,
     Seconds: seconds,
     Play: play,
     Setplay: setPlay
-  })))));
+  }))));
 };
 
 var _default = App;
@@ -29913,7 +29916,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58930" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49497" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
